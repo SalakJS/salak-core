@@ -1,0 +1,41 @@
+{
+  "name": "salak-core",
+  "version": "1.0.0",
+  "description": "A core framework base on koa.",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint index.js lib/* util/* example/* test/*",
+    "test": "jest",
+    "test-cov": "npm run test -- --coverage"
+  },
+  "keywords": [
+    "koa 2.0",
+    "mvc",
+    "controller",
+    "router"
+  ],
+  "author": "wengeek <wenwei897684475@gmail.com>",
+  "repository": "SalakJS/salak-core",
+  "dependencies": {
+    "debug": "^3.1.0",
+    "fs-extra": "^5.0.0",
+    "globby": "^7.1.1",
+    "koa": "^2.4.1",
+    "koa-log4": "^2.3.0",
+    "salak-router": "^1.0.3"
+  },
+  "devDependencies": {
+    "eslint": "^4.13.0",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-node": "^5.2.1",
+    "eslint-plugin-promise": "^3.6.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "jest": "^21.2.1",
+    "supertest": "^3.0.0"
+  },
+  "engines": {
+    "node": ">= 7.6.0"
+  },
+  "license": "MIT"
+}
