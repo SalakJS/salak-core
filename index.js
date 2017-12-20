@@ -1,3 +1,12 @@
+'use strict'
+
+/**
+ * salak
+ *
+ * 创 建 者：wengeek <wenwei897684475@gmail.com>
+ * 创建时间：2017-12-20
+ */
+
 const Koa = require('koa')
 const assert = require('assert')
 const fs = require('fs')

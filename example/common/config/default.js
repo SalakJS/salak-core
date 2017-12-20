@@ -10,7 +10,7 @@ module.exports = {
     */
   ],
   routes: {
-    prefix: '',
+    // prefix: '/api',
     defaultRoute: 'frontend/post'
   },
   logger: {

@@ -1,6 +1,7 @@
 module.exports = {
   routes: {
-    alias: 'blog',
+    alias: '/',
+    // prefix: '/demo',
     defaultRoute: 'post/index'
   },
   middleware: [

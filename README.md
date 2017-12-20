@@ -1,5 +1,19 @@
 # salak-core
 
+[![NPM version][npm-image]][npm-url]
+[![build status][travis-image]][travis-url]
+[![David deps][david-image]][david-url]
+[![NPM download][download-image]][download-url]
+
+[npm-image]: https://img.shields.io/npm/v/salak-core.svg?style=flat-square
+[npm-url]: https://npmjs.org/package/salak-core
+[travis-image]: https://img.shields.io/travis/SalakJS/salak-core.svg?style=flat-square
+[travis-url]: https://travis-ci.org/SalakJS/salak-core
+[david-image]: https://img.shields.io/david/SalakJS/salak-core.svg?style=flat-square
+[david-url]: https://david-dm.org/SalakJS/salak-core
+[download-image]: https://img.shields.io/npm/dm/salak-core.svg?style=flat-square
+[download-url]: https://npmjs.org/package/salak-core
+
 salak核心库，基于koa 2.0
 
 **不建议直接使用salak-core，可以直接使用[salak]**

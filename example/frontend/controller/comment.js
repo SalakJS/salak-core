@@ -12,11 +12,6 @@ class Post extends Controller {
             summary: '创建文章',
             description: '创建',
             tags: ['Blog']
-          },
-          validate: {
-            params: {
-              id: '^[0-9a-fA-F]{24}$'
-            }
           }
         }
       }
@@ -28,7 +23,7 @@ class Post extends Controller {
   }
 
   actionCreate () {
-
+    this.ctx.body = 'hello create'
   }
 }
 

@@ -1,3 +1,12 @@
+'use strict'
+
+/**
+ * 工具类
+ *
+ * 创 建 者：wengeek <wenwei897684475@gmail.com>
+ * 创建时间：2017-12-20
+ */
+
 const assert = require('assert')
 const path = require('path')
 const fs = require('fs')

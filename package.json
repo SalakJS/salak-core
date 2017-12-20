@@ -1,10 +1,10 @@
 {
   "name": "salak-core",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A core framework base on koa.",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint index.js lib/* util/* example/* test/*",
+    "lint": "eslint .",
     "test": "jest",
     "test-cov": "npm run test -- --coverage"
   },
@@ -22,7 +22,7 @@
     "globby": "^7.1.1",
     "koa": "^2.4.1",
     "koa-log4": "^2.3.0",
-    "salak-router": "^1.0.3"
+    "salak-router": "^1.0.4"
   },
   "devDependencies": {
     "eslint": "^4.13.0",
