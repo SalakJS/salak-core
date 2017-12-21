@@ -38,21 +38,16 @@ class SalakCore extends Koa {
 
   [INIT_READY] () {
     this.rootConfig = this.loader.getConfig()
+    this.mode = this.rootConfig.bootstraps && this.rootConfig.bootstraps.length ? 'multiple' : 'single' // 两种模式，单模块应用single 或者 多模块 multiple，根据bootstraps识别
 
-    assert(this.rootConfig.bootstraps, 'config key: bootstraps missing.')
-    assert(this.rootConfig.bootstraps.length, 'config key: bootstraps must not be empty.')
+    this.helper = this.loader.loadHelper()
 
-    this.modules = this.loader.getModulePaths(this.rootConfig.bootstraps)
-    this.moduleConfigs = this.loader.getModuleConfigs(this.modules)
-
-    this.configs = Object.assign({}, {
-      [this.root]: this.rootConfig
-    }, this.moduleConfigs)
+    const { modules, configs } = this.loader.getModuleConfigs(this.rootConfig)
+    this.modules = modules
+    this.configs = configs
 
     this.logger = this.loader.loaderLogger(this.rootConfig.logger)
-
     this.middlewares = this.loader.loadDir(this.modules, 'middleware')
-
     this.models = this.loader.loadDir(this.modules, 'model')
     this.services = this.loader.loadDir(this.modules, 'service')
 
