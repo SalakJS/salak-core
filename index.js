@@ -26,6 +26,7 @@ class SalakCore extends Koa {
 
     super()
     this.baseDir = baseDir
+    this.BaseContext = BaseContext
     this.root = (opts && opts.root) || 'common' // common目录名字，通过opts.root 可修改目录名
     this.loader = new SalakCoreLoader({
       app: this,
@@ -48,7 +49,6 @@ class SalakCore extends Koa {
 
     this.logger = this.loader.loaderLogger(this.rootConfig.logger)
     this.middlewares = this.loader.loadDir(this.modules, 'middleware')
-    this.models = this.loader.loadDir(this.modules, 'model')
     this.services = this.loader.loadDir(this.modules, 'service')
 
     this.buildInMiddlewares = SalakCore[DEFAULTS].buildInMiddlewares || {} // 框架自带的中间件

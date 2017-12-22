@@ -41,7 +41,8 @@ module.exports = {
     assert(options.directory, 'options.directory is required.')
     const defaults = {
       match: ['**/*.js'],
-      ignore: null
+      ignore: null,
+      call: null
     }
 
     options = Object.assign({}, defaults, options)
@@ -69,7 +70,14 @@ module.exports = {
     for (let item of filepaths) {
       const properties = item.substring(0, item.lastIndexOf('.')).split(/\/|\\/).filter((str) => str !== '').join('.')
 
-      filesObj[properties] = this.loadFile(path.join(directory, item), true)
+      const fileObj = this.loadFile(path.join(directory, item), true)
+
+      if (options.call) {
+        filesObj[properties] = options.call(fileObj)
+        continue
+      }
+
+      filesObj[properties] = fileObj
     }
 
     return filesObj
