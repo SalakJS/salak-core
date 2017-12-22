@@ -16,7 +16,7 @@
 
 salak核心库，基于koa 2.0
 
-**不建议直接使用salak-core，可以直接使用[salak]**
+**不建议直接使用salak-core，可以直接使用 [salak](https://github.com/salakJS/salak)**
 
 ## 特性
 
