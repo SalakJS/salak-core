@@ -12,6 +12,7 @@ const path = require('path')
 const fs = require('fs')
 const globby = require('globby')
 const debug = require('debug')('salak-core:util')
+const toString = Object.prototype.toString
 
 module.exports = {
   /**
@@ -81,5 +82,26 @@ module.exports = {
     }
 
     return filesObj
+  },
+
+  // 组合配置
+  combineConfig (...args) {
+    let config
+    let configType
+
+    for (let i = args.length - 1; i > -1; i--) {
+      const arg = args[i]
+      if (arg !== undefined) {
+        configType = toString.call(arg)
+        config = arg
+        break
+      }
+    }
+
+    if (configType === '[object Object]') {
+      return Object.assign.apply({}, args.filter((item) => item))
+    }
+
+    return config
   }
 }

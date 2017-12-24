@@ -4,7 +4,7 @@ class Post extends Controller {
   constructor (...args) {
     super(...args)
 
-    this.middleware('auth').only('index')
+    this.middleware('auth', this.module, { test: 'what hahaah' }).only('index')
   }
 
   static behaviors () {
