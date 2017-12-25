@@ -99,7 +99,9 @@ module.exports = {
     }
 
     if (configType === '[object Object]') {
-      return Object.assign.apply({}, args.filter((item) => item))
+      args.unshift({})
+
+      return Object.assign.apply(null, args.filter((item) => item))
     }
 
     return config
