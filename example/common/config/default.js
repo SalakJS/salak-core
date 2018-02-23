@@ -18,31 +18,27 @@ module.exports = {
     capture: {
       enable: true,
       category: 'http',
-      level: 'info'
+      level: 'auto'
     },
     categories: {
       default: {
         type: 'dateFile',
         filename: 'default/default.log',
-        pattern: '-yyyy-MM-dd.log'
+        datePattern: 'YYYY-MM-DD'
       },
       http: {
         type: 'dateFile',
         filename: 'access/access.log',
-        pattern: '-yyyy-MM-dd.log'
+        datePattern: 'YYYY-MM-DD'
       },
-      errors: {
-        type: 'logLevelFilter',
-        appender: {
-          type: 'dateFile',
-          filename: 'errors/errors.log',
-          pattern: '-yyyy-MM-dd.log'
-        },
+      error: {
+        type: 'levelFilter',
+        filename: 'errors/errors.log',
+        datePattern: 'YYYY-MM-DD',
         level: 'error'
       }
     },
-    defaultLevel: 'info',
-    pm2: true
+    defaultLevel: 'info'
   },
   middleware: [
     // 两种写法

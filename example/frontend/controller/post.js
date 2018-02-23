@@ -27,6 +27,7 @@ class Post extends Controller {
 
   actionIndex () {
     this.service('post').create()
+    this.logger.http.info('test')
     this.ctx.body = 'hello, post!'
   }
 
