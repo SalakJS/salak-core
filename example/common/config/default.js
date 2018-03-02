@@ -18,7 +18,8 @@ module.exports = {
     capture: {
       enable: true,
       category: 'http',
-      level: 'auto'
+      level: 'auto',
+      ignoreHeaderKeys: ['cookie']
     },
     categories: {
       default: {
