@@ -4,7 +4,7 @@ const READY_CALLBACK = Symbol('salak#ReadyCallback')
 let instance = null
 
 class Ready extends EventEmitter {
-  constructor ({ timeout = 10000 } = {}) {
+  constructor ({ timeout = 120000 } = {}) {
     super()
     this[READY_CALLBACK] = []
     this.timer = setTimeout(() => {

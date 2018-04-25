@@ -38,7 +38,7 @@ class SalakCore extends Koa {
 
     this.readyTimeout = opts && opts.readyTimeout || 120000
     this.readyInstance = Ready.getInstance({
-      timeout: opts && opts.readyTimeout
+      timeout: this.readyTimeout
     })
 
     this[INIT_READY]()
