@@ -1,6 +1,6 @@
 {
   "name": "salak-core",
-  "version": "1.1.15",
+  "version": "1.1.16",
   "description": "A core framework base on koa.",
   "main": "index.js",
   "scripts": {
@@ -18,7 +18,7 @@
   "repository": "SalakJS/salak-core",
   "dependencies": {
     "debug": "^3.1.0",
-    "fs-extra": "^5.0.0",
+    "fs-extra": "^6.0.0",
     "globby": "^8.0.1",
     "koa": "^2.4.1",
     "salak-router": "^1.0.4",
