@@ -10,6 +10,7 @@
 const Koa = require('koa')
 const assert = require('assert')
 const fs = require('fs')
+const http = require('http')
 const SalakCoreLoader = require('./lib/salakLoader')
 const BaseContext = require('./lib/context')
 const Ready = require('./util/ready')
@@ -60,7 +61,7 @@ class SalakCore extends Koa {
     this.modules = modules
     this.configs = configs
 
-    this.logger = this.loader.loaderLogger(this.rootConfig.logger)
+    this.logger = this.loader.loadLogger(this.rootConfig.logger)
     this.services = this.loader.loadDir(this.modules, 'service')
 
     this.buildInMiddlewares = SalakCore[DEFAULTS].buildInMiddlewares || {} // 框架自带的中间件
@@ -79,17 +80,47 @@ class SalakCore extends Koa {
       this.readyInstance.ready(() => {
         this.middlewares = this.loader.loadDir(this.modules, 'middleware')
         // 加载路由器
-        const { router, routesDefinitions } = this.loader.loaderController(this.modules) || {}
+        const { router, routesDefinitions } = this.loader.loadController(this.modules) || {}
         this.router = router
         // 可用于swagger
         this.routesDefinitions = routesDefinitions
 
         // 加载中间件
         this[LOAD_MIDDLEWARES]()
+
+        // 加载定时任务
+        this.loader.loadSchedules()
       })
 
       this.readyInstance.ready(true)
     })
+  }
+
+  /**
+   * 创建匿名context，用于调用service
+   */
+  createAnonymousContext () {
+    const request = {
+      headers: {
+        'x-forwarded-for': '127.0.0.1'
+      },
+      query: {},
+      querystring: '',
+      host: '127.0.0.1',
+      hostname: '127.0.0.1',
+      protocol: 'http',
+      secure: 'false',
+      method: 'GET',
+      url: '/',
+      path: '/',
+      socket: {
+        remoteAddress: '127.0.0.1',
+        remotePort: 7001
+      }
+    }
+
+    const response = new http.ServerResponse(request)
+    return this.createContext(request, response)
   }
 
   [LOAD_MIDDLEWARES] () {
@@ -110,6 +141,7 @@ SalakCore[DEFAULTS] = {
 SalakCore.Controller = require('./lib/controller')
 SalakCore.Service = BaseContext
 SalakCore.BaseContext = BaseContext
+SalakCore.Schedule = BaseContext
 
 SalakCore.defaults = DEFAULTS
 SalakCore.Joi = require('salak-router').Joi

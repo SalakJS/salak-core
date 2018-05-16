@@ -1,6 +1,6 @@
 const Controller = require('../../../lib/controller')
 
-class Post extends Controller {
+class Comment extends Controller {
   static behaviors () {
     return {
       routes: {
@@ -27,4 +27,4 @@ class Post extends Controller {
   }
 }
 
-module.exports = Post
+module.exports = Comment
