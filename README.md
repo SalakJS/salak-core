@@ -14,6 +14,8 @@
 [download-image]: https://img.shields.io/npm/dm/salak-core.svg?style=flat-square
 [download-url]: https://npmjs.org/package/salak-core
 
+## **Deprecated**，move to [salak](https://github.com/salakJS/salak)
+
 salak核心库，基于koa 2.0
 
 **不建议直接使用salak-core，可以直接使用 [salak](https://github.com/salakJS/salak)**
